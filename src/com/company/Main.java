@@ -13,7 +13,9 @@ public class Main {
         int min = 1;
         int max = 10;
 
-        while(!(selected))
+        String initRes = "";
+
+        while(!(selected)) //figure out how to check this first
         {
             System.out.println("Which game would you like to play?");
             System.out.println();
@@ -21,8 +23,22 @@ public class Main {
             System.out.println("Press 1 for you to be the guesser.");
             System.out.println("Press 2 for me to be the guesser.");
 
-            String initRes = (input.nextLine());
+            initRes = (input.nextLine());
 
+            if(initRes ==1)
+            {
+                selected =true;
+            }
+            else
+            {
+                if(initRes ==2)
+                {
+                    selected =true;
+                }
+            }
+
+
+        }
             while(!(diffAns))
             {
                 System.out.println("Please choose a difficulty");
@@ -181,8 +197,5 @@ public class Main {
                     System.out.println("Please select 1 or 2");
                 }
             }
-
-        }
         input.close();
-    }
 }
