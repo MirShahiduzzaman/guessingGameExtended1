@@ -14,10 +14,11 @@ public class Main {
             System.out.println("Which game would you like to play?");
             System.out.println();
 
-            System.out.println("Press 1 to be the guesser.");
+            System.out.println("Press 1 for you to be the guesser.");
             System.out.println("Press 2 for me to be the guesser.");
 
-            if ((input.nextLine()).equals("1"))
+            String initRes = (input.nextLine());
+            if (initRes.equals("1"))
             {
                 int min = 1;
                 int max = 10;
@@ -59,7 +60,7 @@ public class Main {
             }
             else
             {
-                if ((input.nextLine()).equals("2"))
+                if (initRes.equals("2"))
                 {
                     int min = 0;
                     int max = 10;
