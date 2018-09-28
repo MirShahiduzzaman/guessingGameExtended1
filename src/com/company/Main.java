@@ -8,6 +8,10 @@ public class Main {
     {
         Scanner input = new Scanner(System.in);
         boolean selected = false;
+        boolean diffAns = false;
+
+        int min = 1;
+        int max = 10;
 
         while(!(selected))
         {
@@ -18,15 +22,56 @@ public class Main {
             System.out.println("Press 2 for me to be the guesser.");
 
             String initRes = (input.nextLine());
+
+            while(!(diffAns))
+            {
+                System.out.println("Please choose a difficulty");
+                System.out.println();
+
+                System.out.println("Press 1 for numbers 1 to 10");
+                System.out.println("Press 2 for numbers 1 to 100");
+                System.out.println("Press 3 for numbers 1 to 1000");
+                System.out.println("Press 4 for numbers 1 to 10000");
+
+                int difficult = (input.nextInt());
+
+                if (difficult == 1)
+                {
+                    diffAns = true;
+                }
+                else
+                {
+                    if (difficult == 2)
+                    {
+                        max = 100;
+                        diffAns = true;
+                    }
+                    else
+                    {
+                        if (difficult == 3)
+                        {
+                            max = 1000;
+                            diffAns = true;
+                        }
+                        else
+                        {
+                            if (difficult == 4)
+                            {
+                                max = 10000;
+                                diffAns = true;
+                            }
+                        }
+                    }
+                }
+            }
+
             if (initRes.equals("1"))
             {
-                int min = 1;
-                int max = 10;
-
                 double num = (Math.random() * max) + 1;
                 String realNum = Double.toString(num);
 
                 realNum = realNum.substring(0,realNum.indexOf("."));
+                System.out.println(realNum);
                 //everything b4 this line establishes the num
 
                 boolean right = false;
@@ -62,9 +107,6 @@ public class Main {
             {
                 if (initRes.equals("2"))
                 {
-                    int min = 0;
-                    int max = 10;
-
                     int range = max-min;
                     String response = "";
 
