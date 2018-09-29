@@ -1,10 +1,12 @@
 package com.company;
-
+/**Mir Shahiduzzaman 9/28/2018*/
 import java.util.Scanner;
 
-public class Main {
+public class Main
+{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner input = new Scanner(System.in);
         boolean selected = false;
         boolean diffAns = false;
@@ -14,7 +16,7 @@ public class Main {
 
         String initRes = "";
 
-        while (!(selected)) //figure out how to check this first
+        while (!(selected))
         {
             System.out.println("Which game would you like to play?");
             System.out.println();
@@ -24,15 +26,20 @@ public class Main {
 
             initRes = (input.nextLine());
 
-            if (initRes.equals("1")) {
+            if (initRes.equals("1"))
+            {
                 selected = true;
-            } else {
-                if (initRes.equals("2")) {
+            }
+            else
+            {
+                if (initRes.equals("2"))
+                {
                     selected = true;
                 }
             }
         }
-        while (!(diffAns)) {
+        while (!(diffAns))
+        {
             System.out.println("Please choose a difficulty");
             System.out.println();
 
@@ -43,18 +50,28 @@ public class Main {
 
             String difficult = (input.nextLine());
 
-            if (difficult.equals("1")) {
+            if (difficult.equals("1"))
+            {
                 diffAns = true;
-            } else {
-                if (difficult.equals("2")) {
+            }
+            else
+            {
+                if (difficult.equals("2"))
+                {
                     max = 100;
                     diffAns = true;
-                } else {
-                    if (difficult.equals("3")) {
+                }
+                else
+                {
+                    if (difficult.equals("3"))
+                    {
                         max = 1000;
                         diffAns = true;
-                    } else {
-                        if (difficult.equals("4")) {
+                    }
+                    else
+                    {
+                        if (difficult.equals("4"))
+                        {
                             max = 10000;
                             diffAns = true;
                         }
@@ -63,13 +80,13 @@ public class Main {
             }
         }
 
-        if (initRes.equals("1")) {
+        if (initRes.equals("1"))
+        {
             double num = (Math.random() * max) + 1;
             String strNum = Double.toString(num);
             int intGuess = 0;
 
             strNum = strNum.substring(0, strNum.indexOf("."));
-            System.out.println(strNum);
 
             int realNum = Integer.parseInt(strNum);
             //everything b4 this line establishes the num
@@ -77,8 +94,10 @@ public class Main {
             boolean right = false;
             String guess = "";
 
-            while (!(right)) {
-                try {
+            while (!(right))
+            {
+                try
+                {
                     System.out.println("What is your guess? (" + min + "-" + max + ")");
                     guess = input.nextLine();
 
@@ -91,90 +110,121 @@ public class Main {
                         System.out.println();
 
                         intGuess = Integer.parseInt(guess);
-                        if (intGuess==realNum)
+                        if (intGuess == realNum)
                         {
                             System.out.println("You got it!");
                             right = true;
                         }
                         else
                         {
-                            if(intGuess<realNum) {
-                                System.out.println("My number is higher.");
+                            if (intGuess < min || intGuess > max)
+                            {
+                                System.out.println("Your number is not in range.");
                             }
                             else
                             {
-                                System.out.println("My number is lower.");
+                                if (intGuess < realNum)
+                                {
+                                    System.out.println("My number is higher.");
+                                }
+                                else
+                                {
+                                    System.out.println("My number is lower.");
+                                }
                             }
                         }
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     System.out.println("Your guess was not a number. Please input a numerical guess.");
-                    guess = input.next();
+                    guess = "";
                 }
             }
-        } else {
-            if (initRes.equals("2")) {
+        }
+        else
+        {
+            if (initRes.equals("2"))
+            {
+                min = 0;
                 int range = max - min;
                 String response = "";
 
-                System.out.println("Think of a number from 1-100 and I will try to guess it...");
-                System.out.println("For each response, type higher, lower, or correct.");
+                System.out.println("Think of a number from " + min + "-" + max + " and I will try to guess it...");
                 System.out.println();
 
-                while (range >= 0) {
-                    if (range % 2 != 0) {
-                        System.out.println("Is your number " + (((max + min + 1) / 2)) + "?");
-                    } else {
-                        System.out.println("Is your number " + (((max + min) / 2)) + "?");
-                    }
-                    //guess number
-
-                    response = (input.nextLine()).toLowerCase();
-                    //lower case result
-
-                    //check response
-                    //if need to check if last num, use if range<=1, then print Oh I got ur number! Its __. Then end the game.
-                    // Else do the code after this comment
-                    if (range <= 1) {
-                        System.out.println("I know your number now! Its " + ((max + min) / 2) + ".");
+                while (range >= 0)
+                {
+                    if((range == 0))  //if there is only one num left in the range of values do this
+                    {
+                        System.out.println("I found you're number! Its " + max);
                         range = -1;
-                    } else {
+                    }
+                    else
+                    {
+                        if (range % 2 != 0)
+                        {
+                            System.out.println("Is your number " + (((max + min + 1) / 2)) + "? Type higher, lower, or " +
+                                    "correct.");
+                        }
+                        else
+                        {
+                            System.out.println("Is your number " + (((max + min) / 2)) + "? Type higher, lower, or " +
+                                    "correct.");
+                        }
+                        //guess number
+
+                        response = (input.nextLine()).toLowerCase();
+                        //lower case result
+
+                        //check response
                         if (response.equals("lower")) //lower means change max
                         {
-                            if (range % 2 != 0) {
+                            if (range % 2 != 0)
+                            {
                                 max = ((max + min + 1) / 2);
-                            } else {
+                            }
+                            else
+                            {
                                 max = ((max + min) / 2);
                             }
                             System.out.println();
 
                             range = max - min;
-                        } else {
+                        }
+                        else
+                        {
                             if (response.equals("higher")) //higher means change min
                             {
-                                if (range % 2 != 0) {
+                                if (range % 2 != 0)
+                                {
                                     min = ((max + min + 1) / 2);
-                                } else {
+                                }
+                                else
+                                {
                                     min = ((max + min) / 2);
                                 }
                                 System.out.println();
 
                                 range = max - min;
-                            } else {
-                                if (response.equals("correct")) {
+                            }
+                            else
+                            {
+                                if (response.equals("correct"))
+                                {
                                     System.out.println("Yay!");
                                     range = -1;
-                                } else {
+                                }
+                                else
+                                {
                                     System.out.println("For each response, type higher, lower, or correct.");
                                 }
                             }
                         }
                     }
                 }
-            } else {
-                System.out.println("Please select 1 or 2");
             }
+            input.close();
         }
-        input.close();
     }
 }
